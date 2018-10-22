@@ -19,7 +19,7 @@ import java.io.IOException;
 @EnableWebMvc
 @ComponentScan("spittr.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
-    /*@Bean
+    @Bean
     public ViewResolver viewResolver(){
         InternalResourceViewResolver resolver=new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/views/");
@@ -27,7 +27,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         resolver.setViewClass(org.springframework.web.servlet.view.JstlView.class);
         resolver.setExposeContextBeansAsAttributes(true);
         return resolver;
-    }*/
+    }
 
     @Override
     public void configureDefaultServletHandling(
@@ -45,10 +45,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return tiles;
     }
 
-    @Bean
+    /*@Bean
     public ViewResolver viewResolver() {
         return new TilesViewResolver();
-    }
+    }*/
 
     @Bean
     public MultipartResolver multipartResolver() throws IOException {
