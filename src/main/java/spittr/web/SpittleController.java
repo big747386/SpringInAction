@@ -35,7 +35,7 @@ public class SpittleController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String saveSpittle(SpittleForm form,Model model) {
-        spittleRepository.save(new Spittle(null,form.getMessage(),new Date(),
+        spittleRepository.save(new Spittle(form.getMessage(),new Date(),
                 form.getLongitude(),form.getLatitude()));
         return "redirect:/spittles";
     }

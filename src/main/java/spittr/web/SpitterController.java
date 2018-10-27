@@ -23,11 +23,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 @RequestMapping("/spitter")
 public class SpitterController {
-    private SpittleRepository spittleRepository;
+    private SpitterRepository spitterRepository;
 
     @Autowired
-    public SpitterController(SpittleRepository spittleRepository){
-        this.spittleRepository=spittleRepository;
+    public SpitterController(SpitterRepository spitterRepository){
+        this.spitterRepository=spitterRepository;
     }
 
     @RequestMapping(value="/register",method = GET)
@@ -36,7 +36,7 @@ public class SpitterController {
         return "registerForm";
     }
 
-    @RequestMapping(value = "register",method = POST)
+    @RequestMapping(value = "/register",method = POST)
     public String processRegistration(@RequestPart("profilePicture") MultipartFile profilePicture,
                                       @Valid Spitter spitter, Errors errors ,
                                       RedirectAttributes model) throws IOException {
@@ -44,7 +44,7 @@ public class SpitterController {
             return "registerForm";
         }
         profilePicture.transferTo(new File("data/spittr/"+profilePicture.getOriginalFilename()));
-        spittleRepository.save(register);
+        spitterRepository.save(spitter);
         model.addAttribute("username",spitter.getUsername());
         model.addFlashAttribute("spitter",spitter);
         return "redirect:/spitter/{username}";
@@ -53,7 +53,7 @@ public class SpitterController {
     @RequestMapping(value = "/{username}",method = GET)
     public String showSpitterProfile(@PathVariable String username, Model model){
         if(!model.containsAttribute("spitter")) {
-            model.addAttribute(spittleRepository.findByUsername(username));
+            model.addAttribute(spitterRepository.findByUsername(username));
         }
         return "profile";
     }

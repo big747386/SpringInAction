@@ -1,18 +1,16 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <%--
   Created by IntelliJ IDEA.
   User: yuyim
-  Date: 2018/10/11
-  Time: 21:41
+  Date: 2018/9/28
+  Time: 21:30
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
-    <title></title>
+  <title>$Title$</title>
 </head>
 <body>
-<c:forEach
+$END$
 </body>
 </html>
